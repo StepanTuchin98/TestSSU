@@ -21,7 +21,8 @@ public class FindMouseTest {
     private static final String MIN_PRICE_VALUE = "800";
     private static final String MAX_PRICE_VALUE = "1000";
     private static final String SORT_BY = "div.n-filter-sorter:nth-child(3) > a:nth-child(1)";
-    private static final String REAL_PRICE = "div.n-snippet-cell2:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(1)";
+    private static final String REAL_PRICE_MIN = "div.n-snippet-cell2:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(1)";
+    private static final String REAL_PRICE_MAX = "div.n-snippet-cell2:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(1)";
 
     @Description("Test finds mouses in set range.")
     @Test(groups = { "Finding" })
@@ -62,18 +63,22 @@ public class FindMouseTest {
 
         WebElement sortBy = driver.findElement(By.cssSelector(SORT_BY));
         sortBy.click();
+        WebElement MinPrice = driver.findElement(By.cssSelector(REAL_PRICE_MIN));
+        String[] smin = MinPrice.getText().split(" ");
+        sortBy.click();
+        WebElement MaxPrice = driver.findElement(By.cssSelector(REAL_PRICE_MAX));
+        String[] smax = MaxPrice.getText().split(" ");
 
         try {
-            WebElement price = driver.findElement(By.cssSelector(REAL_PRICE));
 
-            String[] strings = price.getText().split(" ");
-            if(Integer.valueOf(strings[0]) < Integer.parseInt(MIN_PRICE_VALUE)
-                    && Integer.valueOf(strings[0]) > Integer.parseInt(MAX_PRICE_VALUE))
+            if(Integer.valueOf(smin[0]) == Integer.parseInt(MIN_PRICE_VALUE)
+                    && Integer.valueOf(smax[0]) == Integer.parseInt(MAX_PRICE_VALUE))
                 Assert.fail("Price doesn't match");
         }
         catch (NullPointerException e){
             e.printStackTrace();
         }
+
 
 
     }

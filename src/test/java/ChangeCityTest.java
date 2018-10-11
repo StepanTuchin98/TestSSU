@@ -1,7 +1,6 @@
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ChangeCityTest {
 
-    private static final String PATH = "";
+    private static final String PATH = "\"C:\\\\Program Files\\\\SeleniumGecko\\\\geckodriver.exe\"";
     private static final String ANOTHER_CITY_BUTTON = ".button2_theme_normal";
     private static final String CITY_INPUT ="div.input > span:nth-child(1) > input:nth-child(2)";
     private static final String TEMP_CITY = "Энгельс";
@@ -29,7 +28,7 @@ public class ChangeCityTest {
     @Test(groups = { "Changing" })
     @Description("Try to change city to another one, than change it back.")
     public void yandexMarketChangeCity(){
-        System.setProperty("webdriver.gecko.driver", "C:\\Program Files\\SeleniumGecko\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", PATH);
 
         FirefoxOptions options = new FirefoxOptions();
         options.setCapability("marionette", false);
@@ -37,6 +36,7 @@ public class ChangeCityTest {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.get("https://market.yandex.ru/");
+
 
 
         WebElement anotherCity = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(ANOTHER_CITY_BUTTON)));
