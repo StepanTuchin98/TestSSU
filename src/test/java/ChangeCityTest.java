@@ -18,7 +18,7 @@ public class ChangeCityTest {
 
 
    
-    @Test(groups = { "Changing" })
+    @Test(groups = { "basic" })
     @Description("Try to change city to another one, than change it back.")
     public void yandexMarketChangeCity(){
         WebDriver driver = WebDriverLoader.setDriver(PATH);

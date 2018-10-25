@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.GlobalMethods;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,8 +15,7 @@ public class FindMouseSteps {
     private static final String REAL_PRICE_MAX = "div.n-snippet-cell2:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > div:nth-child(1)";
 
     public static Pair<String, String> findMaxAndMin(WebDriverWait wait){
-        WebElement sortBy = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(SORT_BY)));
-        sortBy.click();
+        WebElement sortBy = GlobalMethods.clickElemBySelect(wait, SORT_BY);
 
         WebElement MinPrice = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(REAL_PRICE_MIN)));
         String[] smin = MinPrice.getText().split(" ");
@@ -26,12 +26,5 @@ public class FindMouseSteps {
 
         return  new Pair<String, String>(smin[0], smax[0]);
     }
-
-
-
-
-
-
-
 
 }

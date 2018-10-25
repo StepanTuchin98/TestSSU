@@ -24,13 +24,11 @@ public class LoginTest {
 
 
     @Description("Login test with correct data, than test checks that the user sing in.")
-    @Test(groups = { "Logining" })
+    @Test(groups = { "basic" })
     public void loginTest(){
         WebDriver driver = WebDriverLoader.setDriver(PATH);
         WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
-
         WebDriverLoader.loadPage(driver, PAGENAME);
-
         LoginSteps.login(wait, driver, LOGIN, PASSWORD);
 
         Assert.assertEquals(LoginSteps.getUserName(wait), LOGIN);

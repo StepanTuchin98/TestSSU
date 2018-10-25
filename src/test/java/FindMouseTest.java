@@ -25,7 +25,7 @@ public class FindMouseTest {
 
 
     @Description("Test finds mouses in set range.")
-    @Test(groups = { "Finding" })
+    @Test(groups = { "basic" })
     public void findMouse(){
         WebDriver driver = WebDriverLoader.setDriver(PATH);
         WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
@@ -37,8 +37,8 @@ public class FindMouseTest {
         GlobalMethods.MaxPriceField(wait, MAX_PRICE_VALUE);
         Pair<String,String> temp = FindMouseSteps.findMaxAndMin(wait);
 
-        if(Integer.valueOf(temp.getKey()) == Integer.parseInt(MIN_PRICE_VALUE)
-                && Integer.valueOf(temp.getValue()) == Integer.parseInt(MAX_PRICE_VALUE))
+        if(Integer.valueOf(temp.getKey()) >= Integer.parseInt(MIN_PRICE_VALUE)
+                && Integer.valueOf(temp.getValue()) <= Integer.parseInt(MAX_PRICE_VALUE))
             Assert.fail("Price doesn't match");
 
     }
