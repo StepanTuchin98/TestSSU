@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 public class FindMouseTest {
 
-    private static final String PATH = "C:\\Program Files\\SeleniumGecko\\geckodriver.exe";
     private static final int TIMEOUTSECONDS = 10;
     private static final String PAGENAME = "https://market.yandex.ru/";
     private static final String QUERY_PRODUCT = "Компьютерные мыши";
@@ -27,7 +26,7 @@ public class FindMouseTest {
     @Description("Test finds mouses in set range.")
     @Test(groups = { "basic" })
     public void findMouse(){
-        WebDriver driver = WebDriverLoader.setDriver(PATH);
+        WebDriver driver = WebDriverLoader.setDriver();
         WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
 
         WebDriverLoader.loadPage(driver, PAGENAME);

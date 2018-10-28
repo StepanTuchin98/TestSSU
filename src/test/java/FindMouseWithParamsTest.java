@@ -9,7 +9,6 @@ import utils.WebDriverLoader;
 public class FindMouseWithParamsTest {
 
     private static FindMouseWithParamsSteps findMouseWithParamsSteps;
-    private static final String PATH = "C:\\Program Files\\SeleniumGecko\\geckodriver.exe";
     private static final int TIMEOUTSECONDS = 10;
     private static final String PAGENAME = "https://market.yandex.ru/";
 
@@ -26,7 +25,7 @@ public class FindMouseWithParamsTest {
 
     @Test(dataProvider = "testWithParams")
     public void testFindMouseWithParams(int minPriceValue, int maxPriceValue) {
-        WebDriver driver = WebDriverLoader.setDriver(PATH);
+        WebDriver driver = WebDriverLoader.setDriver();
         WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
         WebDriverLoader.loadPage(driver, PAGENAME);
 

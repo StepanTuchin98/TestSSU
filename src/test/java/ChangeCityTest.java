@@ -8,7 +8,6 @@ import utils.WebDriverLoader;
 public class ChangeCityTest {
 
 
-    private static final String PATH = "\"C:\\\\Program Files\\\\SeleniumGecko\\\\geckodriver.exe\"";
     private static final int TIMEOUTSECONDS = 10;
     private static final String PAGENAME = "https://market.yandex.ru/";
     private static final String TEMP_CITY = "Энгельс";
@@ -21,7 +20,7 @@ public class ChangeCityTest {
     @Test(groups = { "basic" })
     @Description("Try to change city to another one, than change it back.")
     public void yandexMarketChangeCity(){
-        WebDriver driver = WebDriverLoader.setDriver(PATH);
+        WebDriver driver = WebDriverLoader.setDriver();
         WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
 
         WebDriverLoader.loadPage(driver, PAGENAME);

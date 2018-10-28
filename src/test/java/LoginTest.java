@@ -16,9 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginTest {
 
-    private static final String LOGIN = "tuchinstepan";
-    private static final String PASSWORD = "yandextest";
-    private static final String PATH = "C:\\Program Files\\SeleniumGecko\\geckodriver.exe";
+
     private static final int TIMEOUTSECONDS = 10;
     private static final String PAGENAME = "https://market.yandex.ru/";
 
@@ -26,12 +24,12 @@ public class LoginTest {
     @Description("Login test with correct data, than test checks that the user sing in.")
     @Test(groups = { "basic" })
     public void loginTest(){
-        WebDriver driver = WebDriverLoader.setDriver(PATH);
+        WebDriver driver = WebDriverLoader.setDriver();
         WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
         WebDriverLoader.loadPage(driver, PAGENAME);
-        LoginSteps.login(wait, driver, LOGIN, PASSWORD);
+        String login = LoginSteps.login(wait, driver);
 
-        Assert.assertEquals(LoginSteps.getUserName(wait), LOGIN);
+        Assert.assertEquals(LoginSteps.getUserName(wait), login);
 
 
     }
