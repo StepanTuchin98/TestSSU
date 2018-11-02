@@ -18,13 +18,13 @@ public class FindMouseSteps {
         WebElement sortBy = GlobalMethods.clickElemBySelect(wait, SORT_BY);
 
         WebElement MinPrice = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(REAL_PRICE_MIN)));
-        String[] smin = MinPrice.getText().split(" ");
+        String smin = MinPrice.getText().replaceAll("\u20BD","").replaceAll(" ","");
 
         sortBy.click();
         WebElement MaxPrice = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(REAL_PRICE_MAX)));
-        String[] smax = MaxPrice.getText().split(" ");
+        String smax = MaxPrice.getText().replaceAll("\u20BD","").replaceAll(" ","");
 
-        return  new Pair<String, String>(smin[0], smax[0]);
+        return  new Pair<String, String>(smin, smax);
     }
 
 }
