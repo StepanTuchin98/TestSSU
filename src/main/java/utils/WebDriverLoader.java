@@ -17,7 +17,8 @@ public class WebDriverLoader {
 
         FirefoxOptions options = new FirefoxOptions();
         options.setCapability("marionette", false);
-
+        //= new HtmlUnitDriver();
+        //driver.setJavascriptEnabled(true);
         return new FirefoxDriver(options);
     }
 

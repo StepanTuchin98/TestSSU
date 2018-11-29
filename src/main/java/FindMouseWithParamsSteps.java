@@ -14,7 +14,7 @@ public class FindMouseWithParamsSteps {
         GlobalMethods.MaxPriceField(wait, Integer.toString(maxPriceValue));
         Pair<String,String> temp = FindMouseSteps.findMaxAndMin(wait);
 
-        return Integer.valueOf(temp.getKey()) >= minPriceValue && Integer.valueOf(temp.getValue()) <= maxPriceValue;
+        return (Integer.parseInt(temp.getKey())) >= minPriceValue && (Integer.parseInt(temp.getValue())) <= maxPriceValue;
 
 
     }

@@ -52,13 +52,14 @@ public class GlobalMethods {
     }
 
     public static void  sendKeysBySelect(WebDriverWait wait, String pattern, String keys) {
-        WebElement login = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(pattern)));
+        WebElement login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(pattern)));
         login.clear();
         login.sendKeys(keys);
     }
     public static void  sendKeysByXPath(WebDriverWait wait, String pattern, String keys) {
-        WebElement login = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(pattern)));
+        WebElement login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(pattern)));
         login.clear();
         login.sendKeys(keys);
     }
+
 }

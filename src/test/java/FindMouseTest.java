@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.GlobalMethods;
 import utils.WebDriverLoader;
@@ -21,14 +23,19 @@ public class FindMouseTest {
     private static final String QUERY_PRODUCT = "Компьютерные мыши";
     private static final String MIN_PRICE_VALUE = "800";
     private static final String MAX_PRICE_VALUE = "1000";
+    private static WebDriver driver;
+    private static WebDriverWait wait;
 
+    @BeforeTest
+    public void init()
+    {
+        driver = WebDriverLoader.setDriver();
+        wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
+    }
 
     @Description("Test finds mouses in set range.")
     @Test(groups = { "basic" })
     public void findMouse(){
-        WebDriver driver = WebDriverLoader.setDriver();
-        WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
-
         WebDriverLoader.loadPage(driver, PAGENAME);
 
         GlobalMethods.searchField(wait, QUERY_PRODUCT);
@@ -40,5 +47,11 @@ public class FindMouseTest {
                 && Integer.valueOf(temp.getValue()) <= Integer.parseInt(MAX_PRICE_VALUE))
             Assert.fail("Price doesn't match");
 
+    }
+
+    @AfterTest(alwaysRun=true)
+    public void closeBrowser()
+    {
+        driver.close();
     }
 }

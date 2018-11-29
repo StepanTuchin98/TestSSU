@@ -19,9 +19,9 @@ public class ChangeCitySteps {
 
     public static void changeCity(WebDriverWait wait) {
 
-        WebElement anotherCity = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(ANOTHER_CITY_BUTTON)));
+        WebElement anotherCity = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(ANOTHER_CITY_BUTTON)));
 
-        WebElement City = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(CITY_BUTTON)));
+        WebElement City = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(CITY_BUTTON)));
         if (anotherCity != null)
             anotherCity.click();
         else

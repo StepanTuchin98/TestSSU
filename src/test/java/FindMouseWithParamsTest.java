@@ -1,9 +1,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utils.WebDriverLoader;
 
 public class FindMouseWithParamsTest {
@@ -11,7 +9,15 @@ public class FindMouseWithParamsTest {
     private static FindMouseWithParamsSteps findMouseWithParamsSteps;
     private static final int TIMEOUTSECONDS = 10;
     private static final String PAGENAME = "https://market.yandex.ru/";
+    private static WebDriver driver;
+    private static WebDriverWait wait;
 
+    @BeforeTest
+    public void init()
+    {
+        driver = WebDriverLoader.setDriver();
+        wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
+    }
 
     @BeforeMethod
     public void initialize() {
@@ -25,11 +31,13 @@ public class FindMouseWithParamsTest {
 
     @Test(dataProvider = "testWithParams")
     public void testFindMouseWithParams(int minPriceValue, int maxPriceValue) {
-        WebDriver driver = WebDriverLoader.setDriver();
-        WebDriverWait wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
         WebDriverLoader.loadPage(driver, PAGENAME);
-
         Assert.assertTrue(findMouseWithParamsSteps.findMouse(wait, minPriceValue, maxPriceValue ));
     }
 
+    @AfterTest(alwaysRun=true)
+    public void closeBrowser()
+    {
+        driver.close();
+    }
 }
