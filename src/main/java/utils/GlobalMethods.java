@@ -15,7 +15,7 @@ public class GlobalMethods {
     private static final String MAX_PRICE = "#glpriceto";
 
     public static void searchField(WebDriverWait wait, String queryProduct) {
-        WebElement searchField = wait.until(ExpectedConditions.elementToBeClickable(By.id(SEARCH_FIELD)));
+        WebElement searchField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(SEARCH_FIELD)));
         searchField.clear();
         searchField.sendKeys(queryProduct);
 
@@ -24,13 +24,13 @@ public class GlobalMethods {
     }
 
     public static void MinPriceField(WebDriverWait wait, String minPriceValue) {
-        WebElement minPrice = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(MIN_PRICE)));
+        WebElement minPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(MIN_PRICE)));
         minPrice.clear();
         minPrice.sendKeys(minPriceValue);
     }
 
     public static void MaxPriceField(WebDriverWait wait, String maxPriceValue) {
-        WebElement maxPrice = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(MAX_PRICE)));
+        WebElement maxPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(MAX_PRICE)));
         maxPrice.clear();
         maxPrice.sendKeys(maxPriceValue);
     }
@@ -48,7 +48,7 @@ public class GlobalMethods {
     }
 
     public static String  getTextOfField(WebDriverWait wait, String inf) {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(inf))).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(inf))).getText();
     }
 
     public static void  sendKeysBySelect(WebDriverWait wait, String pattern, String keys) {

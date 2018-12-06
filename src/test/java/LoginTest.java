@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -25,23 +26,19 @@ public class LoginTest {
     private static WebDriverWait wait;
 
     @BeforeTest
-    public void init()
+    public void init(ITestContext testContext)
     {
         driver = WebDriverLoader.setDriver();
         wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
+        testContext.setAttribute("WebDriver", this.driver);
     }
 
     @Description("Login test with correct data, than test checks that the user sing in.")
     @Test(groups = { "basic" })
     public void loginTest(){
-        driver = WebDriverLoader.setDriver();
-        wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
         WebDriverLoader.loadPage(driver, PAGENAME);
         String login = LoginSteps.login(wait, driver);
-
         Assert.assertEquals(LoginSteps.getUserName(wait), login);
-
-
     }
 
     @AfterTest(alwaysRun=true)

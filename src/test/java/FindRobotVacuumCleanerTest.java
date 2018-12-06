@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -19,10 +20,11 @@ public class FindRobotVacuumCleanerTest {
     private static WebDriverWait wait;
 
     @BeforeTest
-    public void init()
+    public void init(ITestContext testContext)
     {
         driver = WebDriverLoader.setDriver();
         wait = WebDriverLoader.setWait(driver, TIMEOUTSECONDS);
+        testContext.setAttribute("WebDriver", this.driver);
     }
 
     @Description("Login, add to the basket.")
