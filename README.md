@@ -3,7 +3,7 @@ YandexMarketTestUI
 
 In this project I tried out Selenium, TestNG and Allure 2.0 fraemworks.
 
-The main goal of the project is testing of main functions of site yandexmarket.com
+The main goal of the project is testing of main functions of site yandexmarket.ru
 
 The detailed tasks are: 
 1. Change city to "Энгельс", then go back to "Саратов".
